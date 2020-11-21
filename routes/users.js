@@ -31,7 +31,7 @@ router.get('/login', notLoggedIn, (req, res) => {
     res.render('users/login');
 });
 
-router.post('/login', notLoggedIn, passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }), async (req, res) => {
+router.post('/login', notLoggedIn, passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }), (req, res) => {
     req.flash('success', 'welcome back');
     const redirectUrl = req.session.returnTo || '/campgrounds';
     delete req.session.returnTo;
